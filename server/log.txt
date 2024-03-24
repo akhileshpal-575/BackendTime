@@ -1,12 +1,6 @@
-1711191042627 : New Req Recieved
-1711191042698 : New Req Recieved
-1711191062436 : New Req Recieved
-1711191062481 : New Req Recieved
-1711191066616 : New Req Recieved
-1711191066659 : New Req Recieved
-1711191086275 : New Req Recieved
-1711191086451 : New Req Recieved
-1711259580002 : / New Req Recieved
-1711259580107 : /favicon.ico New Req Recieved
-1711259587758 : /about New Req Recieved
-1711259587825 : /favicon.ico New Req Recieved
+1711276743073 :GET / New Req Recieved
+1711276743224 :GET /favicon.ico New Req Recieved
+1711276763975 :GET / New Req Recieved
+1711276764025 :GET /favicon.ico New Req Recieved
+1711276773912 :GET /about New Req Recieved
+1711276773967 :GET /favicon.ico New Req Recieved
