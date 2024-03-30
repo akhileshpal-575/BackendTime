@@ -1,11 +1,42 @@
 const express = require("express")
 const users = require("./MOCK_DATA.json")
 
-const fs = require("fs")
+const mongoose = require("mongoose")
+const fs = require("fs");
+const { stringify } = require("querystring");
 
 const app = express();
 const PORT = 8000;
 
+//schema 
+const userSchema = new mongoose.Schema({
+    firstName : {
+        type: String,
+        required: true,
+    },
+    lastName :{
+        type : String,
+    },
+    email : {
+        type : String,
+        required : true,
+        unique : true,
+    },
+    jobTitle :{
+        type : String,
+    },
+    gender :{
+        type : String,
+    },  
+},
+{timestamps : true }
+) 
+// connecting 
+mongoose.connect('mongodb://localhost:27017/learing-Backend')
+.then(console.log("connected MongoDb"))
+.catch(err=> console.log('mongodb error'))
+// model
+const User = mongoose.model("user",userSchema) 
 //built in middleware
 app.use(express.urlencoded({extended:false}))
 
@@ -53,12 +84,18 @@ app.route('/api/users/:id').get((req,res)=>{
     // Todo: delete user
     return res.json({status:'pending'})
 })
-app.post('/api/users/',(req,res)=>{
+app.post('/api/users/', async (req,res)=>{
     //Todo: create new user
     const body = req.body
-    users.push({...body,id:users.length+1})
-    fs.writeFile('./MOCK_DATA.json',JSON.stringify(users),(err,data)=>{
-        return res.json({status:'succes',id:users.length})        
-    })
+    if(!body||!body.first_name||!body.last_name||!body.gender||!body.email||!body.job_title){
+     return res.status(400).json({msg : 'all field are req....'})
+    }
+  const result = await User.create({
+   firstName : body.first_name,
+   lastName : body.last_name,
+   email : body.email,
+   gender : body.gender,
+ })
+ return res.status(201).json({msg : "success"})
 })
 app.listen(PORT,()=> console.log(`server started at PORT 8000`))
