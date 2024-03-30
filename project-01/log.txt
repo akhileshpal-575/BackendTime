@@ -2,3 +2,9 @@
 1711783405913 ::1 : GET :/api/users/
 1711783425933 ::1 : POST :/api/users/
 1711798739471 ::1 : POST :/api/users/
+1711810171059 ::1 : POST :/api/users/
+1711810309784 ::1 : GET :/users/
+1711810409458 ::1 : GET :/users/
+1711810499803 ::1 : GET :/users/
+1711810544306 ::1 : POST :/api/users/
+1711810548536 ::1 : GET :/users/
