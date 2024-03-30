@@ -6,13 +6,23 @@ const fs = require("fs")
 const app = express();
 const PORT = 8000;
 
+//built in middleware
+app.use(express.urlencoded({extended:false}))
+
+//middleware
+app.use((req,res,next)=>{
+    console.log("respond from middleware1")
+    fs.appendFile('log.txt',`\n${Date.now()} ${req.ip} : ${req.method} :${req.path}`,(err,data)=>{
+        next()
+    })
+})
+
 //Rest Api's
 app.get("/api/users",(req,res)=>{
     return res.json(users);
 })
 
 
-app.use(express.urlencoded({extended:false}))
 
 // app.get('/api/users/:id',(req,res)=>{
 // const id = Number(req.params.id);
