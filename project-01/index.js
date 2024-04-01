@@ -15,5 +15,5 @@ app.use(express.urlencoded({extended:false}))
 app.use(logReqRes('log.txt'))
 
 // Routes
-app.use('/api/user',userRouter);
+app.use('/api/users',userRouter);
 app.listen(PORT,()=> console.log(`server started at PORT 8000`))
